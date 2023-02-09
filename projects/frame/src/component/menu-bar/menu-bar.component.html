@@ -1,0 +1,84 @@
+<div class="menu-bar">
+  <div>
+    <span
+      class="logo"
+      nz-icon
+      nzType="apple"
+      nzTheme="fill"
+      nz-popover
+      nzPopoverTitle=""
+      nzPopoverTrigger="click"
+      nzPopoverPlacement="bottomLeft"
+      nzPopoverOverlayClassName="os-popover"
+      [nzPopoverContent]="contentTemplate"
+      [(nzPopoverVisible)]="osVisible"
+      >
+    </span>
+    <ng-template #contentTemplate>
+      <ul>
+        <li (click)="handleAbout()">关于WebOS</li>
+        <nz-divider></nz-divider>
+        <li>系统设置</li>
+        <nz-divider></nz-divider>
+        <li>退出系统</li>
+      </ul>
+    </ng-template>
+
+    <span
+      *ngIf="appSer.currentApp"
+      class="current-app"
+      nz-popover
+      nzPopoverTitle=""
+      nzPopoverTrigger="click"
+      nzPopoverPlacement="bottomLeft"
+      nzPopoverOverlayClassName="os-popover app-popover"
+      [nzPopoverContent]="currentAppTemplate"
+      [(nzPopoverVisible)]="currentAppVisible"
+      >
+      {{ appSer.currentApp.name }}
+    </span>
+    <ng-template #currentAppTemplate>
+      <ul>
+        <li (click)="handleAboutApp()">关于{{ appSer.currentApp?.name }}</li>
+        <nz-divider></nz-divider>
+        <li (click)="handleExitApp()">退出{{ appSer.currentApp?.name }}</li>
+      </ul>
+    </ng-template>
+
+  </div>
+
+  <div>
+    <span class="icon" nz-icon nzType="search" nzTheme="outline"></span>
+    <span class="icon ctc" nz-icon (click)="handleCtc($event)" cdkOverlayOrigin #trigger="cdkOverlayOrigin">
+      <svg>
+        <path d="M306.89 142.8H717.1c90.62 0.22 163.9 73.87 163.68 164.49-0.22 90.31-73.38 163.46-163.68 163.68H306.89c-90.62-0.22-163.9-73.87-163.68-164.49 0.22-90.3 73.38-163.45 163.68-163.68z m0 246.13c45.31 0 82.04-36.73 82.04-82.04s-36.73-82.04-82.04-82.04-82.04 36.73-82.04 82.04 36.73 82.04 82.04 82.04z" fill="#2E3133"></path>
+        <path d="M306.89 553.02H717.1c90.62 0.22 163.9 73.87 163.68 164.49-0.22 90.31-73.38 163.46-163.68 163.68H306.89c-90.62-0.22-163.9-73.87-163.68-164.49 0.22-90.3 73.38-163.45 163.68-163.68zM717.1 799.15c45.31 0 82.04-36.73 82.04-82.04 0-45.31-36.73-82.04-82.04-82.04s-82.04 36.73-82.04 82.04c0 45.31 36.73 82.04 82.04 82.04z" fill="#2E3133" opacity=".5"></path>
+      </svg>
+    </span>
+    <span class="time" (click)="drawerVisible = true;">{{ service.now | date:'MM月dd日 HH:mm' }}</span>
+
+    <ng-template
+      cdkConnectedOverlay
+      [cdkConnectedOverlayOrigin]="trigger"
+      [cdkConnectedOverlayOpen]="ctcVisible"
+      >
+      <mz-ctc></mz-ctc>
+    </ng-template>
+  </div>
+</div>
+
+<nz-drawer
+  [nzClosable]="false"
+  [nzVisible]="drawerVisible"
+  [nzMaskStyle]="{ backgroundColor: 'rgba(0,0,0,0)' }"
+  nzPlacement="right"
+  nzTitle=""
+  (nzOnClose)="drawerVisible = false;"
+  >
+  <ng-container *nzDrawerContent>
+    <ng-container *ngIf="drawerVisible">
+      <mz-calendar></mz-calendar>
+      <mz-clock></mz-clock>
+    </ng-container>
+  </ng-container>
+</nz-drawer>

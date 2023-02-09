@@ -1,0 +1,24 @@
+<div class="ctc-popover">
+  <div class="box items">
+    <mz-ctc-item alias="RTL" icon="border-left" key="dir" openValue="rtl"></mz-ctc-item>
+    <mz-ctc-item alias="语言" icon="global" key="i18n"></mz-ctc-item>
+    <mz-ctc-item alias="全屏" icon="fullscreen" key="fullscreen"></mz-ctc-item>
+    <mz-ctc-item alias="键盘独占" icon="gold" key="keyboard" openValue="monopoly"></mz-ctc-item>
+  </div>
+  <div class="box">
+    <span>外观</span>
+    <nz-radio-group [(ngModel)]="themeSer.theme">
+      <label nz-radio nzValue="light">浅色</label>
+      <!-- 由于 ng-zorro 不支持 深色主题 和 基于CSS Variable的动态主题 同时使用，故暂时先不支持深色模式 -->
+      <!-- 如果使用 定制主题 中的 动态切换主题，倒是也能实现深色模式和主色调同时应用的效果，但不想如此麻烦，还是等等看 ng-zorro 能否支持吧 -->
+      <label nz-radio nzValue="dark" nzDisabled>深色</label>
+      <label nz-radio nzValue="auto" nzDisabled>自动</label>
+    </nz-radio-group>
+  </div>
+  <div class="box">
+    <span class="alias">主色调</span>
+    <div>
+      <span class="color" *ngFor="let color of themeSer.primaryColors" [class.selected]="color === themeSer.primaryColor" [ngStyle]="{ backgroundColor: color }" (click)="handleToggleColor($event, color)"></span>
+    </div>
+  </div>
+</div>

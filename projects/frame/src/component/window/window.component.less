@@ -1,0 +1,108 @@
+.window {
+  width: 600px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+  box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  // background-color: rgba(255, 255, 255, 0.35);
+  background-color: #fff;
+  position: absolute;
+  transform-origin: center center;
+
+  &.in-animation {
+    transition: left 0.3s, top 0.3s, width 0.3s, height 0.3s, transform 0.3s, opacity 0.3s;
+  }
+
+  &.frosted {
+    background-color: rgba(255, 255, 255, 0.35);
+    
+    &::before {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      content: '';
+      border-radius: 6px;
+      position: absolute;
+      backdrop-filter: blur(30px);
+    }
+  }
+
+  // &::before {
+  //   top: 0;
+  //   left: 0;
+  //   right: 0;
+  //   bottom: 0;
+  //   content: '';
+  //   border-radius: 6px;
+  //   position: absolute;
+  //   backdrop-filter: blur(30px);
+  // }
+
+  .title {
+    width: 100%;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    font-size: 14px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    position: relative;
+    background-color: #f5f5f5;
+
+    &.no-bg {
+      background-color: rgba(0, 0, 0, 0);
+    }
+
+    span {
+      width: 12px;
+      height: 12px;
+      margin-right: 6px;
+      border-radius: 50%;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+
+      &.close {
+        border: solid 1px #e24138;
+        background-color: #fe5e57;
+      }
+      &.minimize {
+        border: solid 1px #e19c1b;
+        background-color: #fdbd2e;
+      }
+      &.maximize {
+        border: solid 1px #1baa26;
+        background-color: #27c840;
+      }
+      &.disabled {
+        border-color: #dee1e6;
+        background-color: #dee1e6;
+      }
+    }
+
+    .txt {
+      flex: auto;
+      text-align: center;
+      user-select: none;
+    }
+  }
+
+  .content {
+    flex: auto;
+    position: relative;
+    padding: 15px;
+    overflow: auto;
+
+    .inactive-mask {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+}

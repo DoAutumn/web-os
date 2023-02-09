@@ -1,0 +1,35 @@
+.ctc-item-box {
+  display: flex;
+  align-items: center;
+  width: 100px;
+  cursor: pointer;
+
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin-right: 8px;
+
+    &.open {
+      color: #fff;
+      background-color: var(--ant-primary-color);
+    }
+  }
+
+  .anticon-down {
+    position: relative;
+    top: 1px;
+  }
+}
+
+::ng-deep html.rtl {
+  .ctc-item-box .icon {
+    margin-left: 8px !important;
+    margin-right: 0 !important;
+  }
+}

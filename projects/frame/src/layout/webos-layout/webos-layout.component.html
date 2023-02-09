@@ -1,0 +1,11 @@
+<div class="webos-layout" [dir]="configSer.dir">
+
+  <mz-menu-bar></mz-menu-bar>
+  
+  <div #main class="main">
+    <ng-container #container></ng-container>
+    <router-outlet></router-outlet>
+  </div>
+  
+  <mz-dock></mz-dock>
+</div>

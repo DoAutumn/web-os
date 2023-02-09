@@ -1,0 +1,28 @@
+<mz-window mzTitle="Demo1 窗口中再弹窗" (active)="handleActive()" (inactive)="handleInactive()">
+
+  <button nz-button nzSize="small" (click)="goTo('sub1')">弹窗Sub1</button>
+  <button nz-button nzSize="small" (click)="goTo('sub2')">弹窗Sub2</button>
+
+  <nz-table #basicTable nzSize="small" [nzData]="listOfData">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Address</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td>{{ data.name }}</td>
+        <td>{{ data.age }}</td>
+        <td>{{ data.address }}</td>
+        <td>
+          <a>Edit</a>
+          <nz-divider nzType="vertical"></nz-divider>
+          <a>Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</mz-window>

@@ -1,0 +1,11 @@
+<mz-window
+  [style]="style"
+  [frosted]="true"
+  [minimizable]="false"
+  [maximizable]="false"
+  >
+  <span class="logo" nz-icon nzType="apple" nzTheme="fill"></span>
+  <p class="title">WebOS</p>
+  <p class="version">V{{ version }}</p>
+  <p class="copyright">Copyright © {{ timeSer.now | date:'yyyy' }} DoAutumn</p>
+</mz-window>

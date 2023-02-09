@@ -1,0 +1,23 @@
+.dock {
+  display: flex;
+  justify-content: center;
+
+  div {
+    display: flex;
+    border-radius: 10px;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.35);
+    padding: 0 4px;
+  
+    &::before {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      content: '';
+      border-radius: 10px;
+      position: absolute;
+      backdrop-filter: blur(30px);
+    }
+  }
+}

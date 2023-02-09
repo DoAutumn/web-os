@@ -1,0 +1,5 @@
+<div class="dock">
+  <div #dock (mouseleave)="handleMouseleave($event)">
+    <mz-dock-item *ngFor="let app of appSer.apps" [mode]="app" (mouseenter)="handleMouseenter($event)"></mz-dock-item>
+  </div>
+</div>

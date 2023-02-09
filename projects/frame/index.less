@@ -1,0 +1,160 @@
+@import "../../node_modules/ng-zorro-antd/ng-zorro-antd.variable.min.css";
+
+html.rtl {
+  .os-popover .ant-popover-arrow {
+    transform: translateX(21px);
+  }
+}
+
+/** 只覆盖 menu-bar 左上角的 popover 样式 */
+.os-popover {
+  font-size: 12px;
+  transform: translateX(-8px);
+  user-select: none;
+  &.app-popover {
+    transform: translateY(-4px);
+    .ant-popover-arrow {
+      transform: none;
+    }
+  }
+  .ant-popover-arrow {
+    transform: translateX(-7px);
+    .ant-popover-arrow-content {
+      background-color: rgba(255, 255, 255, 0.35);
+      &::before {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 0;
+        height: 0;
+        content: '';
+        position: absolute;
+        backdrop-filter: blur(30px);
+        background: rgba(0, 0, 0, 0);
+      }
+    }
+  }
+  .ant-popover-inner {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.35);
+    &::before {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      content: '';
+      position: absolute;
+      backdrop-filter: blur(30px);
+    }
+    .ant-popover-inner-content {
+      position: relative;
+      padding: 6px;
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        li {
+          cursor: pointer;
+          padding: 1px 4px;
+        }
+        .ant-divider-horizontal {
+          margin: 4px 0;
+        }
+      }
+    }
+  }
+}
+
+/** 覆盖全局 drawer 的样式 */
+.ant-drawer-content-wrapper {
+  top: 25px;
+  height: calc(100% - 25px) !important;
+  .ant-drawer-content {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.15);
+    &::before {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      content: '';
+      position: absolute;
+      backdrop-filter: blur(20px);
+    }
+    .ant-drawer-wrapper-body {
+      position: relative;
+      .ant-drawer-body {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+}
+
+/** 覆盖全局 notification 的样式 */
+.ant-notification-notice {
+  top: 10px;
+  width: auto;
+  border-radius: 6px;
+  padding: 8px 16px;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.15);
+  &::before {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: '';
+    position: absolute;
+    backdrop-filter: blur(20px);
+  }
+  .ant-notification-notice-content {
+    position: relative;
+  }
+  /** 只有 os-notification 下的 标题、关闭图标 不显示 */
+  &.os-notification {
+    .ant-notification-notice-message, .ant-notification-notice-close {
+      display: none;
+    }
+  }
+}
+
+
+/** 覆盖 dock 中的 tooltip 的样式 */
+.dock-tip {
+  bottom: 10px;
+  .ant-tooltip-arrow-content {
+    --antd-arrow-background-color: linear-gradient(to right bottom, rgb(181, 181, 181), rgb(181, 181, 181));
+  }
+  .ant-tooltip-inner {
+    color: #000;
+    min-height: 25px;
+    padding: 2px 8px;
+    background-color: rgb(181, 181, 181);
+  }
+}
+
+/** 覆盖调度中心里的 多语言下拉 的样式 */
+.i18n-menu {
+  margin-top: 10px;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.35);
+  &::before {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: '';
+    opacity: 1;
+    position: absolute;
+    backdrop-filter: blur(20px);
+  }
+  .ant-dropdown-menu {
+    position: relative;
+    background-color: rgba(0, 0, 0, 0);
+    .ant-dropdown-menu-item:hover {
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+  }
+}

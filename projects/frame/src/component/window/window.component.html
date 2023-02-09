@@ -1,0 +1,28 @@
+<div
+  #win
+  class="window"
+  [class.in-animation]="inAnimation"
+  [class.frosted]="frosted"
+  [ngStyle]="winStyle"
+  >
+  <div
+    class="title"
+    [class.no-bg]="!mzTitle"
+    (click)="handleClick($event)"
+    (dblclick)="handleMax($event)"
+    (mousedown)="drag.handleMousedown($event)"
+    >
+    <div>
+      <span class="close" (click)="handleClose($event)"></span>
+      <span class="minimize" [class.disabled]="!minimizable" (click)="handleMin($event)"></span>
+      <span class="maximize" [class.disabled]="!maximizable" (click)="handleMax($event)"></span>
+    </div>
+    <div class="txt">{{ mzTitle }}</div>
+  </div>
+  <div class="content">
+    <ng-content></ng-content>
+
+    <!-- 当窗口处于非活动状态时，可通过点击该遮罩层使其变为活动状态 -->
+    <div *ngIf="inactiveFlag" class="inactive-mask" (click)="handleClick($event)"></div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="ctc-item-box" (click)="handleClick($event)">
+
+  <span class="icon" [class.open]="open" nz-icon [nzType]="icon" nzTheme="outline"></span>
+  
+  <ng-container *ngIf="icon === 'global'; else otherTemp">
+    <span
+      nz-dropdown
+      nzTrigger="click"
+      nzPlacement="bottomCenter"
+      nzOverlayClassName="i18n-menu"
+      [nzDropdownMenu]="menu"
+      (click)="$event.stopPropagation()"
+      >
+      {{ alias }}
+      <span nz-icon nzType="down"></span>
+    </span>
+    <nz-dropdown-menu #menu="nzDropdownMenu">
+      <ul nz-menu nzSelectable>
+        <li nz-menu-item (click)="$event.stopPropagation()">简体中文</li>
+        <li nz-menu-item (click)="$event.stopPropagation()">English</li>
+      </ul>
+    </nz-dropdown-menu>
+  </ng-container>
+  <ng-template #otherTemp>
+    <span >{{ alias }}</span>
+  </ng-template>
+
+</div>

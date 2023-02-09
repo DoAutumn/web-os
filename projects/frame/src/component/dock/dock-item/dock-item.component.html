@@ -1,0 +1,20 @@
+<div
+  class="dock-item"
+  [ngStyle]="{ marginLeft: mode.margin + 'px', marginRight: mode.margin + 'px', width: mode.width + 'px' }"
+  (click)="handleClick()"
+  (mouseenter)="handleMouseenter()"
+  (mouseleave)="handleMouseleave()"
+  nz-tooltip
+  nzTooltipOverlayClassName="dock-tip"
+  [nzTooltipMouseEnterDelay]="0"
+  [nzTooltipTitle]="mode.name"
+  >
+  <div
+    [class.loading]="loading"
+    [class.min-win]="mode.isMinWin"
+    [ngStyle]="{ transform: 'scale(' + mode.scale + ')' }"
+    >
+    <img [src]="mode.iconPath" alt="">
+  </div>
+  <span *ngIf="mode?.running"></span>
+</div>

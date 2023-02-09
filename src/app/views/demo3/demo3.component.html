@@ -1,0 +1,9 @@
+<mz-window mzTitle="Demo3 窗口中再路由" (active)="handleActive()" (inactive)="handleInactive()">
+
+  <button nz-button nzType="link" nzSize="small" (click)="goTo('sub1')">子路由Sub1</button>
+  <button nz-button nzType="link" nzSize="small" (click)="goTo('sub2')">子路由Sub2</button>
+
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</mz-window>
